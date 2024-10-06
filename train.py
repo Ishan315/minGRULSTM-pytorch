@@ -1,3 +1,4 @@
+import time
 import math
 import gzip
 import random
@@ -13,13 +14,13 @@ from minGRU_pytorch.minGRULM import minGRULM
 
 # constants
 
-NUM_BATCHES = int(1e5)
-BATCH_SIZE = 4
-GRAD_ACCUM_EVERY = 4
-LEARNING_RATE = 1e-4
+NUM_BATCHES = int(3e3)
+BATCH_SIZE = 16
+GRAD_ACCUM_EVERY = 2
+LEARNING_RATE = 3e-4
 VALIDATE_EVERY = 100
 PRIME_LENGTH = 128
-GENERATE_EVERY = 500
+GENERATE_EVERY = 250
 GENERATE_LENGTH = 512
 SEQ_LEN = 512
 
@@ -84,10 +85,16 @@ def base_decoding(
 # the minGRU char language model
 
 model = minGRULM(
-    num_tokens = 256,
-    dim = 512,
-    depth = 6
+    num_tokens = 1024,
+    dim = 4096,
+    depth = 6,
+    ff_lstm = True
 ).cuda()
+
+# specs of the model
+print(model)
+total_params = sum(p.numel() for p in model.parameters())
+print(f"Number of parameters: {total_params}")
 
 # prepare enwik8 data
 
@@ -165,3 +172,5 @@ for i in tqdm.tqdm(range(NUM_BATCHES), mininterval = 10.0, desc = "training"):
         base_decode_output = decode_tokens(sampled[0])
 
         print("\n\n", base_decode_output, "\n")
+
+torch.save(model, f'{int(time.time())}.pt')
