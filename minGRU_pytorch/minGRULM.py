@@ -147,7 +147,8 @@ class minGRULM(Module):
             # feedforward
 
             if self.ff_lstm:
-                h0 = torch.zeros(batch_size, dim, device=x.device, dtype=x.dtype)
+                #h0 = torch.zeros(batch_size, dim, device=x.device, dtype=x.dtype)
+                h0 = prev_hidden if prev_hidden else torch.zeros(batch_size, dim, device=x.device, dtype=x.dtype)
                 x = ff(ff_norm(x), h0) + x
             else:
                 x = ff(ff_norm(x)) + x
