@@ -124,8 +124,6 @@ class minGRULM(Module):
         prev_hiddens = iter(default(prev_hiddens, []))
 
         for conv, norm, mingru, ff_norm, ff in self.layers:
-            x = conv(x) + x
-            x = mingru(norm(x)) + x
 
             # conv
 
