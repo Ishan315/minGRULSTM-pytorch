@@ -1,9 +1,10 @@
 [project]
-name = "minGRU-pytorch"
-version = "0.0.8"
-description = "minGRU"
+name = "minGRULSTM-pytorch"
+version = "0.0.1"
+description = "minGRULSTM"
 authors = [
-    { name = "Phil Wang", email = "lucidrains@gmail.com" }
+    { name = "Phil Wang", email = "lucidrains@gmail.com" },
+    { name = "Juanako.AI", email = 'info@juanako.ai' }
 ]
 readme = "README.md"
 requires-python = ">= 3.9"
@@ -27,8 +28,8 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://pypi.org/project/minGRU-pytorch/"
-Repository = "https://github.com/lucidrains/minGRU-pytorch"
+Homepage = "https://pypi.org/project/minGRULSTM-pytorch/"
+Repository = "https://github.com/fblgit/minGRULSTM-pytorch"
 
 [project.optional-dependencies]
 examples = []

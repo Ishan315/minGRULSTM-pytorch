@@ -1,6 +1,7 @@
-## minGRU
+## minGRU with minLSTM
 
 Implementation of the proposed <a href="https://arxiv.org/abs/2410.01201v1">minGRU</a> in Pytorch, only the log-space numerically stable version.
+Based on <a href="https://github.com/lucidrains/minGRU-pytorch">minGRU-pytorch</a> that adds Positional Encoding and minLSTM scenario for FeedForward.
 
 ## Install
 

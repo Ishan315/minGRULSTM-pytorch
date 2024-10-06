@@ -1,11 +1,29 @@
+import math
 import torch
 from torch import nn
 import torch.nn.functional as F
 from torch.nn import Module, ModuleList
 
 from minGRU_pytorch.minGRU import minGRU
+from minGRU_pytorch.minLSTM import minLSTM
 
 # classes
+
+class SinusoidalPositionalEncoding(Module):
+    def __init__(self, dim, max_len=512):
+        super().__init__()
+        pe = torch.zeros(max_len, dim)
+        position = torch.arange(0, max_len).unsqueeze(1).float()
+        div_term = torch.exp(torch.arange(0, dim, 2).float() * (-math.log(10000.0) / dim))
+        pe[:, 0::2] = torch.sin(position * div_term)
+        pe[:, 1::2] = torch.cos(position * div_term)
+        pe = pe.unsqueeze(0)
+        self.register_buffer('pe', pe)
+
+    def forward(self, x):
+        seq_len = x.size(1)
+        x = x + self.pe[:, :seq_len, :]
+        return x
 
 class RMSNorm(Module):
     def __init__(self, dim):
@@ -49,12 +67,17 @@ class minGRULM(Module):
         num_tokens,
         dim,
         depth,
+        max_seq_len=512,
         ff_mult = 4,
         min_gru_expansion = 1.5,
-        conv_kernel_size = 3
+        conv_kernel_size = 3,
+        ff_lstm = True
     ):
         super().__init__()
+        self.dim = dim
+        self.ff_lstm = ff_lstm
         self.token_emb = nn.Embedding(num_tokens, dim)
+        self.pos_encoder = SinusoidalPositionalEncoding(dim, max_len=max_seq_len)
 
         self.layers = ModuleList([])
 
@@ -64,7 +87,7 @@ class minGRULM(Module):
                 RMSNorm(dim),
                 minGRU(dim, expansion_factor = min_gru_expansion),
                 RMSNorm(dim),
-                FeedForward(dim, mult = ff_mult)
+                minLSTM(dim, dim) if ff_lstm else FeedForward(dim, mult = ff_mult)
             ]))
 
         self.norm = RMSNorm(dim)
@@ -80,14 +103,18 @@ class minGRULM(Module):
             x, labels = x[:, :-1], x[:, 1:]
 
         x = self.token_emb(x)
+        x = self.pos_encoder(x)
+        batch_size, seq_len, dim = x.size()
 
         for conv, norm, mingru, ff_norm, ff in self.layers:
-
             x = conv(x) + x
-
             x = mingru(norm(x)) + x
 
-            x = ff(ff_norm(x)) + x
+            if self.ff_lstm:
+                h0 = torch.zeros(batch_size, dim, device=x.device, dtype=x.dtype)
+                x = ff(ff_norm(x), h0) + x
+            else:
+                x = ff(ff_norm(x)) + x
 
         embed = self.norm(x)
         logits = self.to_logits(embed)
