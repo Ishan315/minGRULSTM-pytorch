@@ -15,17 +15,17 @@ from minGRU_pytorch.minGRULM import minGRULM
 
 # constants
 
-NUM_BATCHES = int(3e3)
-BATCH_SIZE = 16
-GRAD_ACCUM_EVERY = 2
+NUM_BATCHES = int(3e3) + 5
+BATCH_SIZE = 8
+GRAD_ACCUM_EVERY = 4
 LEARNING_RATE = 3e-4
 VALIDATE_EVERY = 100
 PRIME_LENGTH = 128
 GENERATE_EVERY = 250
 GENERATE_LENGTH = 512
 SEQ_LEN = 512
-NUM_TOKENS = 1024
-DIM = 4096
+NUM_TOKENS = 256
+DIM = 512
 DEPTH = 6
 FF_LSTM = True
 
@@ -186,8 +186,7 @@ for i in tqdm.tqdm(range(NUM_BATCHES), mininterval = 10.0, desc = "training"):
     wandb.log({
         "train_loss": loss.item(),
         "learning_rate": current_lr,
-        "step": i
-    })
+    }, step=i, commit=False)
 
     # Print training loss
     print(f"Batch {i}: training loss: {loss.item():.3f}")
@@ -203,8 +202,7 @@ for i in tqdm.tqdm(range(NUM_BATCHES), mininterval = 10.0, desc = "training"):
             # Log validation loss
             wandb.log({
                 "validation_loss": val_loss.item(),
-                "step": i
-            })
+            }, step=i, commit=True)
 
     if i % GENERATE_EVERY == 0:
         model.eval()
