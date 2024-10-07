@@ -16,18 +16,21 @@ from minGRU_pytorch.minGRULM import minGRULM
 # constants
 
 NUM_BATCHES = int(3e3) + 5
-BATCH_SIZE = 8
+BATCH_SIZE = 16
 GRAD_ACCUM_EVERY = 4
 LEARNING_RATE = 3e-4
 VALIDATE_EVERY = 100
 PRIME_LENGTH = 128
 GENERATE_EVERY = 250
 GENERATE_LENGTH = 512
-SEQ_LEN = 512
+SEQ_LEN = 1024
 NUM_TOKENS = 256
-DIM = 512
+DIM = 1024
 DEPTH = 6
 FF_LSTM = True
+SEED = 42
+
+torch.manual_seed(SEED)
 
 # Initialize WandB
 wandb.init(
@@ -47,6 +50,7 @@ wandb.init(
         "dim": DIM,
         "depth": DEPTH,
         "ff_lstm": FF_LSTM,
+        "seed": SEED,
     },
     name=f"run_{int(time.time())}",  # Optional: name your run
     reinit=True
@@ -118,6 +122,7 @@ model = minGRULM(
     num_tokens = NUM_TOKENS,
     dim = DIM,
     depth = DEPTH,
+    max_seq_len = SEQ_LEN,
     ff_lstm = FF_LSTM 
 ).cuda()
 

@@ -16,14 +16,14 @@ def log_g(x):
 # log-space version of minLSTM
 
 class minLSTM(nn.Module):
-    def __init__(self, input_size, hidden_size):
+    def __init__(self, input_size, hidden_size, bias=False):
         super(minLSTM, self).__init__()
         self.hidden_size = hidden_size
 
         # Linear layers for forget gate, input gate, and candidate hidden state
-        self.linear_f = nn.Linear(input_size, hidden_size)
-        self.linear_i = nn.Linear(input_size, hidden_size)
-        self.linear_h = nn.Linear(input_size, hidden_size)
+        self.linear_f = nn.Linear(input_size, hidden_size, bias=bias)
+        self.linear_i = nn.Linear(input_size, hidden_size, bias=bias)
+        self.linear_h = nn.Linear(input_size, hidden_size, bias=bias)
 
         # Activation functions
         self.g = g
