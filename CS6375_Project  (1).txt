@@ -1,0 +1,330 @@
+Project Proposal
+CS6375
+
+Typical Report Structure
+• Title/Abstract (Proposal)
+• Introduction (Proposal)
+• Background (Proposal)
+
+• Related Work (Proposal)
+• Formal Problem Definition (Mid-term)
+• Example (Mid-term)
+• Approach/Framework
+• Implementation
+• Evaluation
+• Experiment/Case Studies/Experiences/Examples
+• Discussion
+• Conclusions (and Future work)
+
+Proposal - Introduction Structure
+• Long motivation, problem to be solved, why existing solutions are not sufficient (sometimes examples help)
+• Need show the problem is significant (desirable to use concrete statistics, concrete examples, or citations)
+
+• Proposed solution (inputs/outputs) and key ideas (steps)
+• Optional: brief mention of related work if it is very related and explain differences
+• Evaluation and evaluation results need to be added in final report.
+• Optional: “The paper makes the following main contributions: + bulleted items”
+
+-Easy for reviewers to spot out major contributions
+-Being of the “first” in something is desirable as a contribution
+• In the introduction section of your final report, list the structure layout of the paper (you want to give readers
+high level ideas how different parts are related to each other)
+• Similar principle applied throughout the paper for subsections
+
+Proposal - Introduction Structure
+• Don’t overclaim (even throughout the paper)!
+- But it is good to put your work in a bigger picture and a larger background
+
+- But it is important for you emphasize the significance of the problem and your solution (esp in intro)
+• Similarly don’t over-criticize other’s work (even throughout the paper)!
+• If you want to claim some unjustified points, it is better to put them in conclusion or discussion section
+• Even if so, be careful on wording
+
+- X “Our approach provides a foundation for this new field.”
+- “We believe our approach can provide a foundation…”
+- “We believe our approach has a good potential for providing a foundation …”
+
+Proposal - Introduction Structure
+• Another example: be careful on wording
+- X “Our/X’s approach is the only/first one on ….”
+- “With the best of our knowledge, our/X’s approach is the only one/first on …”
+- “Our/X’s approach is one of the/a few approaches …”
+- “Our/X’s approach is a major/representative approach …”
+• Some reviewers don’t like you to claim your own approach to be “novel” (at least don’t put “novel” in your
+paper title!) – they said novelty is to be judged by them not to be claimed by you
+- “TestEra: A Novel Framework for Automated Testing of Java Programs”
+- “TestEra: Specification-based Testing of Java Programs Using SAT”
+
+Proposal – Writing Tips
+• Iterate and improve the abstract and introduction in a small discussion group (e.g., read to others)
+
+• Pay attention to the logical transitions in sentences in abstract and paragraphs in introduction section (e.g.,
+using Mind Map: http://freemind.sourceforge.net/)
+• Double check that earlier stated characteristics are satisfied
+- Ex. The target problem is significant/important
+- Ex. Your solution is significant/addressing non-trivial technical challenges, and is well validated
+
+Proposal - Background
+• Differences between background and related work
+• You can organize related work with subsections or group them in several categories
+• Background sometimes called Preliminaries
+- Includes notation, terminology, others’ or your previous techniques that are not part of the
+contributions of this paper
+
+Proposal - Related Work
+• Don’t simply list related work without RELATING to your own work! – keywords to use: whereas, in
+contrast, but, however, …
+- “excuses” to use: “does not require specs”, “focus on different problems”, “complement with each
+other”, …
+- you can describe several similar related approaches together and compare them at once with yours
+• Don’t just discuss the differences between your work with related work only in the solution space
+- Need to relate back to the effect/impact on the problem space
+
+- E.g., You may argue that your work uses dynamic analysis and related work uses static analysis --but how would these two analysis types impact the problem you are addressing? Static analysis
+produces too many false warnings? … You need to compare them in terms of observable
+differences from the approaches’ user’s point of view in the problem space
+
+Proposal - Related Work
+• Don’t make unjustified unobvious criticisms on related work if you don’t have experimental results to back
+you up.
+- But you can cite others’ experiments to back you up.
+• Don’t overclaim your work without justification
+• Don’t intentionally leave out very related previous papers, including your own work (reviewers can find them
+out easily)
+- maybe even need to mention them in Introduction section and explain why the new work is different
+- reviewers often try to identify a marginal/incremental paper or a “least publishable unit (LPU)”
+(Google this term!)
+
+Proposal - Related Work
+• Where to put the related work section
+- After the introduction/example section
+- Before the conclusion section
+• After the introduction/example section
+- Pros: Immediately clear out reviewers’ wonder on how the work differs from previous work
+- Cons: hard to let readers to know what you are talking about before showing the approach details
+But it may be ok to put it after the example section (see next slide)
+• Before the conclusion section
+- Pros: Now reviewers’ know what your approach is about
+- Cons: reviewers keep wondering how the work differs from previous work till this point
+But for very closely related work, you should have pointed out the differences in the
+introduction section
+
+Midterm Report - Problem Definition
+• If your paper proposes a new problem or addresses a formalizable problem, it is good to have a section on
+problem definition
+• Examples
+- Section 3.1 http://security.ece.cmu.edu/aeg/aeg-current.pdf
+- Section 4 http://youngwei.com/pdf/AppContext.pdf
+• Such a section is useful to clearly describe the problem being addressed by the paper
+
+Midterm Report - Problem Definition
+• Define the problem that your approach intends to address
+- Can be put in a section after intro/example section, serve the purpose of the example section as
+described later
+• When you formalize your problem, readers can have better grasp on what you are trying to address
+• There you can also formally define some important concepts referred to in your approach (either in the
+problem space or solution space)
+• Problem formalization can be a new contribution in the contribution list
+
+Midterm Report - Technical Challenges
+• Add to your intro or problem definition section in your midterm report.
+• Why list challenges?
+- If your solution is so obvious and easy, you cannot impress readers/reviewers and justify
+significance
+• Challenges from two levels (you can describe challenges at one or both levels)
+
+• Problem-level challenges
+- Independently of any solution to the problem (e.g., static vs dynamic analysis), what are the
+challenges of addressing the problem?
+• Solution-level challenges
+- For the style/direction that you will commit to (e.g., static in contrast to dynamic analysis; of cz, you
+need to justify why static not dynamic already here), what are the challenges of carrying out the
+solution to address the problem?
+
+Simple vs. Sophisticated Solutions
+• Don’t ignore simple (basic, straightforward) solutions while hunting for sophisticated solutions
+- At least try simple ones out, only when they don’t work, use the challenges/difficulties faced there to
+drive the hunting of more sophisticated solutions
+- Simple ones serve as baseline base in evaluation
+• Often the time, students may be too proud of some clever “tricks” that they came up and had tendency of
+losing sight of easier, simpler solutions
+“Make things as simple as possible, but not simpler.” - Einstein
+
+Midterm Report - Technical Challenges
+• Challenges -> Contribution Points
+• Normal structure of main contribution list
+
+- The overall approach
+- A list of specific techniques in the approach
+- Implementation and evaluation
+- Evaluation results
+
+• For each specific technique in your contribution list, you shall have at least one corresponding clearly
+articulated technical challenge
+- If your solution/technique is so obvious and easy, you cannot impress readers/reviewers and justify
+significance
+• Alternatively, you may articulate technical challenges just for the overall approach
+
+Midterm Report - Example
+• A simple example
+- Include: where it comes from; a figure listing source code; brief description – Throughout the paper,
+it is important to have illustrating examples for those places that contain “dry” descriptions of your
+approach
+- If you use several examples throughout the paper, you may not need a separate Example section.
+• Optional/important part of the section: high level description of applying your approach on the example
+
+- describe inputs/outputs of your approach without getting into too much detail
+- very important if the later approach description involves heavy hard-to-understand formalisms
+
+Final Report - Approach
+• Generalize your work in an abstraction level, e.g., positioning it as a framework or algorithm rather than a
+tool
+- What you develop should be beyond your own implementation
+- Then you are in a better position when you discuss limitations of your work: Inherent limitation of
+the framework? Or limitation of your current particular implementation of the framework?
+- A workflow diagram is useful for explaining your framework
+• Try to separate the ideas from (a particular) concrete implementation
+
+- But sometimes you have to mention it a bit and refer the readers to the implementation section.
+• Explain some details with examples (even if you have illustrated your high level ideas in the example section)
+- Often still need to provide algorithm descriptions to precisely describe your approach instead of
+using ONLY examples to explain it
+
+Final Report - Implementation
+• What libraries you used in your tool
+- e.g., BCEL, Daikon frontend, Soot
+
+• Detailed implementations of each step in your framework
+• List complications of implementing a certain idea and how you get around them
+- if some complications are important and general, you may move them to the framework section.
+• Applicable to both approach/implementation
+
+- Don’t detail the entire story of how you arrived at your approach/implementation/results, unless they
+provide useful lessons learned to readers (even so, put them in discussion section)
+
+Final Report - Evaluation
+• (Controlled) Experiment: good for tools that don’t involve human interactions within the approach experiment
+writing structure:
+- Hypotheses/Questions to be answered
+- Double check your questions. Ex. “Can our approach perform better than a previous
+related approach?”, “How much better can our approach perform than …”
+- Measures you use to answer these questions (higher better?)
+- Experiment setup: a good number of subjects, some scripts, some third-party tools or reimplemented
+tools for comparison
+- Independent variables + dependent variables -> metrics
+- Experimental results
+- Illustrate how to read your table/diagrams (columns, x/y axis, etc.)
+- Explain what does the curve or data mean, e.g., “We observed that …”, “The experimental
+results show …”
+- Summarize your findings, remember to get back to answer the hypotheses and questions; it
+is ok to have an undecisive or negative answer based on the experimental results
+- Optional: discussion subsection; or you can put it as a separate section – Sometimes you
+may not include cost (time/memory) in your experimental results but you need to at least
+discuss the analysis cost – Threats to validity: internal, external
+
+Final Report - Evaluation
+• Need explain evaluation results or describe your insights from the observed results rather than just describing
+the results
+- E.g., if some subjects’ results are especially favorable or unfavorable, explain the reasons or even
+your hypothesis (wordings: “We suspect that …” “We hypothesize that …”). You may leave
+confirmation of these hypotheses to future work (e.g., on more experiments)
+• Need describe “Experiment Designs”
+
+- E.g., factors (independent variables), treatments (one factor multiple treatments or one factor one
+treatment)
+• Need hypothesis testing, t-testing especially if you want to say “A result is **significantly** better than B
+result”; statistically significant vs. practically significant
+
+• Measure both mean and variance/deviation, not just mean
+
+Final Report - Evaluation
+• In evaluation (experiments or case studies), we write
+- Research question (first)
+
+- Hypotheses (then) [Optional]
+• Research questions
+- Abstract, general, high level
+• Hypotheses
+
+- Concrete, specific, often answers to the research questions
+• In the experimental results, need describe how the results relate back to which hypotheses and how
+hypotheses relate back to which research questions
+
+Final Report – Evaluation for Empirical Studies
+• Case studies, experiences, and examples are often good for
+- approaches with human involvements [experiments can also involve humans though]
+
+- approaches whose results are hard to quantify with numbers
+- approaches you don’t have a good enough number of subjects for controlled experiments
+• Case studies
+• uncontrolled but just observe – lessons learned
+• Feasibility studies: not directly assess or apply the approach on the real environment but give hints on
+feasibility
+• Experiences/Examples
+
+Empirical Studies
+• Some guidelines on doing/writing experiments
+- “Experimental program analysis: A new program analysis paradigm.” ISSTA 06
+- http://esquared.unl.edu/articles/downloadArticle.php?id=208
+- http://esquared.unl.edu/wikka.php?wakka=ExperimentalProgramAnaly sis
+- http://wwwusers.cs.umn.edu/~heimdahl/ase08ds/AndrewsEvaluation.pdf
+- http://www.acm.org/crossroads/xrds7-4/empirical.html – http://wwwstatic.cc.gatech.edu/~harrold/8803/Classnotes/
+• Some relevant papers/examples of doing/writing various types of evaluation
+- http://www.cs.washington.edu/education/courses/590n/04sp/
+• Experiments vs. Case Studies
+- “Evaluating emerging software development technologies: lessons learned from assessing
+aspect-oriented programming” by Murphy et al.
+http://ieeexplore.ieee.org/search/wrapper.jsp?arnumber=799936
+- A good book on case study research in general – “Case Study Research : Design and Methods”
+by Robert K. Yin – http://www.amazon.com/gp/product/0761925538/104-93656072004707?v=glance&n=283155
+
+Empirical Studies
+• Better Empirical Science for Software Engineering, Basili and Elbaum, ICSE 06
+- http://csce.unl.edu/~elbaum/talks/PresentedICSE2006.ppt
+• Preliminary guidelines for empirical research in software engineering, Kitchenham et al. TSE 02
+- http://csdl.ics.hawaii.edu/techreports/05-06/doc/Kitchenham2002.pdf
+• FOSE 07: The Future of Empirical Methods in Software Engineering Research
+- http://www.simula.no/research/engineering/publications/Simula.SE.13
+• Hints for Reviewing Empirical Work in Software Engineering Tichy ESE 00
+- http://www.springerlink.com/content/rr70j282h2k01960/
+• Readings in Empirical Evaluation for Budding Software Engineering Researchers
+- http://csdl.ics.hawaii.edu/techreports/05-06/05-06.html
+• Courses
+- http://www.cs.toronto.edu/~sme/CSC2130/index.html
+- http://www.cs.tut.fi/~pselonen/OHJ-1860/
+
+Final Report - Discussion
+• Limitations and issues your approach/implementation currently cannot address
+- Optional: how are you going to address them in future work
+
+• Other caveats (scope of your approach)
+• It is often a good idea to list (obvious) limitations and discuss possible solutions for them rather than hiding
+them
+- Reviewers can often identify obvious limitations even if you don’t state them; then they will criticize
+your work on these limitations (you often don’t have a rebuttal against these criticisms in conference
+reviews).
+- If your paper discusses these obvious limitations as well as their potential solutions, the situation can
+be alleviated (it is like you have a rebuttal in your paper already before being criticized!).
+• Possible applications of your approach that you haven’t validated but are convincingly feasible or effective.
+
+Final Report - Conclusion
+• Often easy to write conclusions
+- nothing here should surprise readers; simply summarize your contributions and findings
+
+- In the introduction, “We propose a new approach …” vs. In the conclusions, “We have proposed a
+new approach …”
+• You can state the broader impacts of your approach and your vision
+• You can optionally describe limitations and future work here if you don’t have a discussion section for them
+and propose future work
+
+• May mark your territory of your future work by saying “We are currently doing X..., and preliminary results
+are promising.” (http://infolab.stanford.edu/~widom/paper-writing.html)
+
+Project Website
+• Construct a project web including the evaluation subjects, evaluation results …
+If tool is releasable, release your tool here (even binary form)
+
+If a demo video is available, put it up here (e.g., http://osl.cs.uiuc.edu/~ksen/cute/demo.htm)
+• Why? Building trust from reviewers in your work and your results
+
+
